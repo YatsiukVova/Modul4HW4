@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "Bank": "Server=Zbook\\MSSQLSERVER01;Database=App;Trusted_Connection=True"
+  }
+}
