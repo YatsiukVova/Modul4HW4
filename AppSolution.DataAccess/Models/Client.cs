@@ -11,7 +11,6 @@ namespace AppSolution.DataAccess.Models
         public string LastName { get; set; }
         public string Country { get; set; }
         public string Email { get; set; }
-
         public List<Project> Projects { get; set; } = new List<Project>();
     }
 }

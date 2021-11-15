@@ -15,6 +15,7 @@ namespace AppSolution.DataAccess.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Budget).HasColumnType("Budget");
             builder.Property(x => x.StartedDate).HasColumnType("date");
 
             builder.HasOne(x => x.Client)
@@ -22,11 +23,11 @@ namespace AppSolution.DataAccess.Configurations
                .HasForeignKey(x => x.ClientId)
                .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasData(new Project { Id = 1, Name = "Chest", Budget = 1000, StartedDate = new DateTime() },
-                            new Project { Id = 2, Name = "WebSite", Budget = 1000, StartedDate = new DateTime() },
-                            new Project { Id = 3, Name = "Test", Budget = 1000, StartedDate = new DateTime() },
-                            new Project { Id = 4, Name = "Game", Budget = 1000, StartedDate = new DateTime() },
-                            new Project { Id = 5, Name = "Program", Budget = 1000, StartedDate = new DateTime() });
+            builder.HasData(new Project { Id = 1, ClientId = 2, Name = "Chest", Budget = 1000, StartedDate = new DateTime(1) },
+                            new Project { Id = 2, ClientId = 3, Name = "WebSite", Budget = 1000, StartedDate = new DateTime(1) },
+                            new Project { Id = 3, ClientId = 2, Name = "Test", Budget = 1000, StartedDate = new DateTime(1) },
+                            new Project { Id = 4, ClientId = 1, Name = "Game", Budget = 1000, StartedDate = new DateTime(2) },
+                            new Project { Id = 5, ClientId = 4, Name = "Program", Budget = 1000, StartedDate = new DateTime(1) }); ;
         }
     }
 }
