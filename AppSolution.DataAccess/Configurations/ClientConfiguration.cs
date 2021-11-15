@@ -17,11 +17,6 @@ namespace AppSolution.DataAccess.Configurations
             builder.Property(x => x.Country).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(100).IsRequired();
 
-            /*builder.HasOne(x => x.Email)
-               .WithMany(y => y.Clients)
-               .HasForeignKey(x => x.ClientId)
-               .OnDelete(DeleteBehavior.Cascade);*/
-
             builder.HasData(new Client { Id = 1, FirstName = "Vasay", LastName = "Pupkin", Country = "Ukraine", Email = "Pup@gmail.com" },
                             new Client { Id = 2, FirstName = "Misha", LastName = "Konev", Country = "Ukraine", Email = "KonevM@gmail.com" },
                             new Client { Id = 3, FirstName = "Petro", LastName = "Zaycev", Country = "Poland", Email = "PetrZ@gmail.com" },

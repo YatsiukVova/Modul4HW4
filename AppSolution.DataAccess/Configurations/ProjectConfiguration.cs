@@ -15,7 +15,12 @@ namespace AppSolution.DataAccess.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.StartedDate).HasColumnType("date");
 
+            builder.HasOne(x => x.Client)
+               .WithMany(y => y.Projects)
+               .HasForeignKey(x => x.ClientId)
+               .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(new Project { Id = 1, Name = "Chest", Budget = 1000, StartedDate = new DateTime() },
                             new Project { Id = 2, Name = "WebSite", Budget = 1000, StartedDate = new DateTime() },
