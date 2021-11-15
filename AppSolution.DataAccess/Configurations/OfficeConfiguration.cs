@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ConsoleApp4.Models;
+using AppSolution.DataAccess.Models;
 
-namespace ConsoleApp4.Configurations
+namespace AppSolution.DataAccess.Configurations
 {
     public class OfficeConfiguration : IEntityTypeConfiguration<Office>
     {

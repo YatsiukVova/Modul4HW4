@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp4.Models
+namespace AppSolution.DataAccess.Models
 {
    public class Project
     {
@@ -13,5 +13,6 @@ namespace ConsoleApp4.Models
         public decimal Budget { get; set; }
         public DateTime StartedDate { get; set; }
         public List<EmployeeProject> EmployeeProject { get; set; } = new List<EmployeeProject>();
+        public List<Client> Clients { get; set; } = new List<Client>();
     }
 }

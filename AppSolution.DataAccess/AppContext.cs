@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
-using ConsoleApp4.Configurations;
-using ConsoleApp4.Models;
-namespace ConsoleApp4
+using AppSolution.DataAccess.Configurations;
+using AppSolution.DataAccess.Models;
+
+namespace AppSolution.DataAccess
 {
-    class AppContext : DbContext
+   public class AppContext : DbContext
     {
-        public AppContext()
+        public AppContext(DbContextOptions<AppContext> options)
+            : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
         }
 
         public DbSet<Employee> Employees { get; set; }
@@ -34,8 +34,9 @@ namespace ConsoleApp4
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("settings.json").Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("App"));
+#if DEBUG
+            optionsBuilder.LogTo(Console.Write);
+#endif
         }
     }
 }
