@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace AppSolution.DataAccess
+namespace ConsoleApp4
 {
    public class Program
     {
@@ -15,7 +16,8 @@ namespace AppSolution.DataAccess
 
             var appContext = new AppContext(dbOptionsBuilder.Options);
             appContext.Database.Migrate();
-             
+
+           
             appContext.SaveChanges();
         }
     }
